@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#  Support Management System
 
-## Getting Started
+This project is a **Support Management System** built with **Next.js, React, and Tailwind CSS**, with a backend using **MS SQL Server** and **Docker** for database management.
 
-First, run the development server:
+##  Setup Guide
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### **1️⃣ Prerequisites**
+Ensure you have the following installed:
+- **Docker & Docker Compose**
+- **Node.js** (LTS version recommended)
+- **Git**
+
+---
+
+## 🔹 **Docker Setup (MS SQL Server)**
+
+### **1️⃣ Start the Database**
+Run the following command to start **MS SQL Server** inside a Docker container:
+
+```sh
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=BMG_Challenge10' \
+   -p 1433:1433 --name suporteDB -d mcr.microsoft.com/mssql/server:2019-latest
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ This will create a **suporteDB** database inside a **Docker container**.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### **2️⃣ Connect to the Database**
+- Use **HeidiSQL** or **SQL Server Management Studio (SSMS)**.
+- Connect using:
+    - **Host:** `localhost,1433`
+    - **User:** `sa`
+    - **Password:** `BMG_Challenge10`
+    - **Database:** `SupportDB`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🔹 **Running the Project**
 
-To learn more about Next.js, take a look at the following resources:
+### **1️⃣ Install Dependencies**
+```sh
+npm install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### **2️⃣ Start the Application**
+```sh
+npm run dev  # Runs Next.js in development mode
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Then, open **http://localhost:3000** in your browser.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔹 **API Endpoints**
+- **GET** `/api/suporte` → Fetch all support records
+- **POST** `/api/suporte` → Add a new support record
+- **PUT** `/api/suporte/:id` → Update a support record
+- **DELETE** `/api/suporte/:id` → Delete a record
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+**Now you're ready to set up and run the project!**
+
